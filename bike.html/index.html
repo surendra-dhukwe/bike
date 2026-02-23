@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Super Bike Showroom</title>
+    <link rel="stylesheet" href="bike.css">
+</head>
+<body>
+    <form action="/book" method="POST">
+
+    <h1 align="center">🏍️ Super Bike Showroom</h1>
+    <hr>
+
+    <!-- Navigation -->
+    <h2>Navigation</h2>
+    <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#bikes">Our Bikes</a></li>
+        <li><a href="#offers">Offers</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#booking">Book Now</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+    </ul>
+
+    <hr>
+
+    <!-- Home Section -->
+    <h2 id="home">Welcome to Our Showroom</h2>
+    <p>We provide the best bikes with latest models and amazing offers.</p>
+    <img src="bikebg.avif" alt="Showroom Image">
+
+    <hr>
+
+    <!-- Bike Categories -->
+    <h2 id="bikes">Our Bike Categories</h2>
+
+    <h3>Sports Bikes</h3>
+    <ul>
+        <li>Yamaha R15</li>
+        <li>KTM RC 200</li>
+        <li>Kawasaki Ninja 300</li>
+        <li>TVS Apache RR 310</li>
+    </ul>
+
+    <h3>Cruiser Bikes</h3>
+    <ul>
+        <li>Royal Enfield Classic 350</li>
+        <li>Jawa 42</li>
+        <li>Honda Hness</li>
+        <li>Benelli Imperiale 400</li>
+    </ul>
+
+    <h3>Electric Bikes</h3>
+    <ul>
+        <li>Ola S1 Pro</li>
+        <li>Ather 450X</li>
+        <li>TVS iQube</li>
+        <li>Bajaj Chetak</li>
+    </ul>
+
+    <hr>
+
+    <!-- Bike Details Table -->
+    <h2>Available Models & Prices</h2>
+    <table border="1" width="100%">
+        <tr>
+            <th>Bike Name</th>
+            <th>Engine</th>
+            <th>Mileage</th>
+            <th>Price</th>
+        </tr>
+        <tr>
+            <td>Yamaha R15</td>
+            <td>155cc</td>
+            <td>45 km/l</td>
+            <td>₹1,80,000</td>
+        </tr>
+        <tr>
+            <td>Royal Enfield 350</td>
+            <td>349cc</td>
+            <td>35 km/l</td>
+            <td>₹2,00,000</td>
+        </tr>
+        <tr>
+            <td>KTM RC 200</td>
+            <td>200cc</td>
+            <td>40 km/l</td>
+            <td>₹2,20,000</td>
+        </tr>
+        <tr>
+            <td>Ola S1 Pro</td>
+            <td>Electric</td>
+            <td>120 km/charge</td>
+            <td>₹1,30,000</td>
+        </tr>
+    </table>
+
+    <hr>
+
+    <!-- Offers Section -->
+    <h2 id="offers">Special Offers</h2>
+    <ul>
+        <li>🎉 10% Discount on Sports Bikes</li>
+        <li>💰 Zero Down Payment</li>
+        <li>📅 Easy EMI Options</li>
+        <li>🎁 Free Helmet with Every Purchase</li>
+    </ul>
+
+    <hr>
+
+    <!-- Services -->
+    <h2 id="services">Our Services</h2>
+    <ol>
+        <li>Bike Servicing</li>
+        <li>Insurance Facility</li>
+        <li>Exchange Offer</li>
+        <li>Finance Support</li>
+        <li>Test Ride Facility</li>
+    </ol>
+
+    <hr>
+
+    <!-- Booking Form -->
+   <h2 id="booking">Book Your Bike</h2>
+
+<label>Full Name:</label><br>
+<input type="text" name="name" required><br><br>
+
+<label>Email:</label><br>
+<input type="email" name="email" required><br><br>
+
+<label>Phone Number:</label><br>
+<input type="number" name="phone" required><br><br>
+
+<label>Select Bike:</label><br>
+<select name="bike">
+    <option>Royal Enfield 350</option>
+    <option>Yamaha R15</option>
+    <option>KTM RC 200</option>
+    <option>Ola S1 Pro</option>
+</select><br><br>
+
+<label>Preferred Color:</label><br>
+<input type="radio" name="color" value="Red" required> Red
+<input type="radio" name="color" value="Black"> Black
+<input type="radio" name="color" value="Blue"> Blue
+<input type="radio" name="color" value="White"> White
+<br><br>
+
+<label>Address:</label><br>
+<textarea name="address" rows="4" cols="40"></textarea><br><br>
+
+<input type="submit" value="Book Now">
+<input type="reset" value="Clear">
+
+
+<!-- POPUP MODAL -->
+<div id="popup" class="popup">
+    <div class="popup-content">
+        <span id="closeBtn">&times;</span>
+        <h2 id="popupMessage"></h2>
+        <img id="bikeImage" src="" alt="Bike Image">
+    </div>
+</div>
+
+    <hr>
+
+    <!-- Contact Section -->
+    <h2 id="contact">Contact Us</h2>
+    <p><b>Address:</b> Main Road, Nagpur, India</p>
+    <p><b>Phone:</b> +91 93405177781</p>
+    <p><b>Email:</b> superbike@showroom.com</p>
+    </form>
+
+    <hr>
+
+    <footer>
+        <p align="center">© 2026 Super Bike Showroom | All Rights Reserved</p>
+    </footer>
+    <script>
+const form = document.querySelector("form");
+const popup = document.getElementById("popup");
+const popupMessage = document.getElementById("popupMessage");
+const bikeImage = document.getElementById("bikeImage");
+const popupBox = document.querySelector(".popup-content");
+const closeBtn = document.getElementById("closeBtn");
+
+form.addEventListener("submit", async function(e) {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+    const data = new URLSearchParams(formData);
+
+    const response = await fetch("/book", {
+        method: "POST",
+        body: data
+    });
+
+    const result = await response.json();
+
+    if(result.success) {
+
+        // 🎨 Dynamic Color Shadow
+        let selectedColor = result.color.toLowerCase();
+
+        popupBox.style.boxShadow = `0 0 30px ${selectedColor}`;
+        popupBox.style.border = `2px solid ${selectedColor}`;
+
+        popupMessage.innerHTML = 
+        `🎉 Thank You ${result.name}! <br>
+         Your <b>${result.bike}</b> in 
+         <span style="color:${selectedColor}; font-weight:bold;">
+         ${result.color}
+         </span> color is successfully booked!`;
+
+        // 🏍 Bike Image Switch
+        switch(result.bike) {
+            case "Yamaha R15":
+                bikeImage.src = "images/r15.webp";
+                break;
+            case "Royal Enfield 350":
+                bikeImage.src = "images/re350.jpg";
+                break;
+            case "KTM RC 200":
+                bikeImage.src = "images/ktm.avif";
+                break;
+            case "Ola S1 Pro":
+                bikeImage.src = "images/ola.jpg";
+                break;
+        }
+
+        popup.style.display = "flex";
+        form.reset();
+    }
+});
+
+closeBtn.onclick = () => popup.style.display = "none";
+
+window.onclick = (e) => {
+    if(e.target == popup) popup.style.display = "none";
+};
+</script>
+
+
+
+</body>
+</html>

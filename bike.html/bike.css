@@ -1,0 +1,211 @@
+/* Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Body Background */
+body {
+    background: linear-gradient(to right, #111, #1f1f1f);
+    color: white;
+    line-height: 1.6;
+}
+
+/* Header */
+h1 {
+    font-size: 40px;
+    padding: 20px;
+    background: linear-gradient(45deg, red, orange);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: glow 2s infinite alternate;
+}
+
+/* Glow Animation */
+@keyframes glow {
+    from { text-shadow: 0 0 10px red; }
+    to { text-shadow: 0 0 25px orange; }
+}
+
+/* Navigation */
+ul {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    list-style: none;
+    padding: 15px;
+    background: #000;
+}
+
+ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+ul li a:hover {
+    color: red;
+    transform: scale(1.1);
+}
+
+/* Sections */
+h2 {
+    margin: 20px 0;
+    text-align: center;
+    color: #ff3c00;
+}
+
+h3 {
+    margin-top: 15px;
+    color: orange;
+}
+
+/* Image */
+img {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 10px;
+    transition: 0.5s;
+}
+
+img:hover {
+    transform: scale(1.03);
+}
+
+/* Table */
+table {
+    margin-top: 20px;
+    border-collapse: collapse;
+    background: #222;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+th {
+    background: red;
+    padding: 12px;
+}
+
+td {
+    padding: 10px;
+    text-align: center;
+}
+
+tr:hover {
+    background: #333;
+    transition: 0.3s;
+}
+
+/* Form Styling */
+form {
+    background: #1c1c1c;
+    padding: 30px;
+    margin: 30px auto;
+    width: 80%;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(255,0,0,0.3);
+    animation: fadeIn 1.5s ease-in;
+}
+
+/* Fade Animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+    width: auto;
+    margin-right: 5px;
+}
+
+/* Buttons */
+input[type="submit"] {
+    background: red;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+input[type="submit"]:hover {
+    background: orange;
+    transform: scale(1.05);
+}
+
+input[type="reset"] {
+    background: gray;
+    color: white;
+    cursor: pointer;
+}
+
+input[type="reset"]:hover {
+    background: darkgray;
+}
+
+/* Footer */
+footer {
+    background: black;
+    padding: 15px;
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+
+/* Popup Background */
+.popup {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.8);
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+/* Popup Box */
+.popup-content {
+    background: #111;
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    width: 350px;
+    animation: popupAnim 0.5s ease;
+    transition: 0.4s;
+}
+
+
+@keyframes popupAnim {
+    from { transform: scale(0.5); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+.popup-content img {
+    width: 100%;
+    margin-top: 15px;
+    border-radius: 10px;
+}
+
+#closeBtn {
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    cursor: pointer;
+    font-size: 25px;
+    color: red;
+}
