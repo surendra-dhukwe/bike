@@ -19,6 +19,10 @@ app.use("/images", express.static(path.join(__dirname, "../images")));
 
 
 // Test route (server working check)
+app.get("/", (req,res)=>{
+    res.send("Bike Showroom Backend Running");
+});
+
 app.get("/api/test", (req,res)=>{
     res.json({message:"Server working"});
 });
